@@ -46,8 +46,7 @@ DeviceLogonEvents
 ---
 
 ## 🚨 Part 2 — Alert & Incident Creation
-Once the **query** is validated, the **analytics rule** is **enabled** in **Sentinel**. The system is then able to **autonomously generate alerts** when **brute force criteria** are met.  
-If insufficient **failed logon attempts** exist naturally, additional **failed attempts** can be induced to generate sufficient telemetry. This triggers the **rule**, producing a new **alert** which automatically escalates into an **incident** within the **Threat Management → Incidents** view of Sentinel.  
+Once the **query** is validated, the **analytics rule** is **enabled** in **Sentinel**. The system is then able to **autonomously generate alerts** when **brute force criteria** are met. If insufficient **failed logon attempts** exist naturally, additional **failed attempts** can be induced to generate sufficient telemetry. This triggers the **rule**, producing a new **alert** which automatically escalates into an **incident** within the **Threat Management → Incidents** view of Sentinel.  
 
 <img width="1422" height="731" alt="Screenshot 2025-08-17 at 4 25 16 PM" src="https://github.com/user-attachments/assets/fd3b4e02-a1df-479d-b53e-8cb70433fb1b" />
 
@@ -65,11 +64,6 @@ The incident was worked in accordance with the **NIST 800-61** standard, documen
 ### Detection & Analysis
 
 The **Brute Force Detection – Josh** incident was triggered from **10 different IP addresses** against **2 different hosts**.  
-Check to make sure none of the IP addresses attempting to brute force the machine actually logged in. *(Hint: It’s possible to build this into the query to only trigger for apparent successful brute forces).*  
-Record Findings.  
-
-The **Brute Force Detection – Josh** incident was triggered from **10 different IP addresses** against **2 different hosts**.  
-
 
 To check for potential **compromise**, the following **investigative query** was executed, parameterized by **target system** and **suspect IP**:
 
@@ -83,12 +77,18 @@ DeviceLogonEvents
 ```
 
 This ensured that **failed attempts** did not progress into actual **unauthorized access**.
+<img width="1005" height="663" alt="Screenshot 2025-08-17 at 7 39 06 PM" src="https://github.com/user-attachments/assets/d00629b9-c9cd-477d-bccd-378f8c1804bd" />
+<img width="796" height="355" alt="Screenshot 2025-08-17 at 7 39 30 PM" src="https://github.com/user-attachments/assets/cb6c32a1-7271-41d2-9699-f4f210b9b3a8" />
 
 ### Containment, Eradication, and Recovery
 - **Containment** was simulated by updating the **NSG** associated with the VM to only allow inbound traffic from the **analyst’s workstation**.  
 - In a production environment, **Defender for Endpoint’s isolation feature** would also be leveraged.  
 - **Antivirus scans** were run to validate that no **malware** was deployed.  
-- As **brute force attempts** were **unsuccessful**, no remediation beyond **containment** was required.  
+- As **brute force attempts** were **unsuccessful**, no remediation beyond **containment** was required.
+
+### Isolation of Endpoints via MDE
+<img width="1121" height="760" alt="Screenshot 2025-08-17 at 7 29 24 PM" src="https://github.com/user-attachments/assets/52195669-1099-4950-9249-d0bfb2937d6f" />
+
 
 ### Post-Incident Activities
 Key lessons included the importance of **pre-configured detection thresholds** and consistent **NSG enforcement**.  
@@ -96,6 +96,7 @@ A corporate policy recommendation was documented: all **Azure VMs** must enforce
 
 ### Closure
 The incident was marked as a **True Positive** brute force attempt but **without successful compromise**. **Documentation** and **notes** were finalized within **Sentinel**, and the case was **closed**.
+<img width="1417" height="730" alt="Screenshot 2025-08-17 at 7 55 17 PM" src="https://github.com/user-attachments/assets/64f1e5b4-0e2e-433b-89b3-4b93e5214d34" />
 
 ---
 
