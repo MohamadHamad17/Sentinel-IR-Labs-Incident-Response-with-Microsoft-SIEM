@@ -62,19 +62,24 @@ The incident was worked in accordance with the **NIST 800-61** standard, documen
 - **Roles** and **escalation procedures** were defined prior to incident occurrence.  
 
 ### Detection & Analysis
-The **triggered incident** was reviewed in **Sentinel**. **Entities** were analyzed to determine the **scope** of the brute force campaign:
-- Multiple unique **Remote IPs** were observed attempting repeated logons.  
-- Attempts targeted two distinct **DeviceName entries**.  
-- Validation was performed to ensure no corresponding **successful logon events** occurred.  
+
+The **Brute Force Detection – Josh** incident was triggered from **10 different IP addresses** against **2 different hosts**.  
+Check to make sure none of the IP addresses attempting to brute force the machine actually logged in. *(Hint: It’s possible to build this into the query to only trigger for apparent successful brute forces).*  
+Record Findings.  
+
+The **Brute Force Detection – Josh** incident was triggered from **10 different IP addresses** against **2 different hosts**.  
+
 
 To check for potential **compromise**, the following **investigative query** was executed, parameterized by **target system** and **suspect IP**:
 
-let TargetDevice = "windows-target-1";  
+```kql
+let TargetDevice = "john-smith";  
 let SuspectIP = "89.116.158.44";  
 DeviceLogonEvents  
 | where ActionType == "LogonSuccess"  
 | where DeviceName == TargetDevice and RemoteIP == SuspectIP  
 | order by TimeGenerated desc  
+```
 
 This ensured that **failed attempts** did not progress into actual **unauthorized access**.
 
@@ -99,7 +104,7 @@ To maintain a clean **lab environment**, the associated **analytics rule** was *
 ---
 
 ## 📑 Findings & Notes
-- **Brute force attempts** were detected from **six distinct IP addresses** targeting **multiple hosts**.  
+- **Brute force attempts** were detected from **ten distinct IP addresses** targeting **multiple hosts**.  
 - No **successful logons** occurred from malicious IPs, confirming **preventive defenses**.  
 - **Sentinel’s incident management** streamlined **triage** and **response**.  
 - **NSG lockdown** was effective in simulating **containment**.  
