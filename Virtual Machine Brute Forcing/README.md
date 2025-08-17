@@ -48,6 +48,8 @@ DeviceLogonEvents
 Once the **query** is validated, the **analytics rule** is **enabled** in **Sentinel**. The system is then able to **autonomously generate alerts** when **brute force criteria** are met.  
 If insufficient **failed logon attempts** exist naturally, additional **failed attempts** can be induced to generate sufficient telemetry. This triggers the **rule**, producing a new **alert** which automatically escalates into an **incident** within the **Threat Management → Incidents** view of Sentinel.  
 
+<img width="1422" height="731" alt="Screenshot 2025-08-17 at 4 25 16 PM" src="https://github.com/user-attachments/assets/fd3b4e02-a1df-479d-b53e-8cb70433fb1b" />
+
 The **incident object** contains key attributes such as **triggering IP addresses**, **targeted devices**, and the **mapped MITRE techniques**. This provides the foundation for **investigation**.
 
 ---
