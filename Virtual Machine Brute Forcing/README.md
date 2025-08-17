@@ -111,10 +111,3 @@ To maintain a clean **lab environment**, the associated **analytics rule** was *
 - **NSG lockdown** was effective in simulating **containment**.  
 - **Policy hardening** is recommended to avoid exposure of **VMs** to the **public internet**.  
 
----
-
-## 📚 References
-- [**Microsoft Sentinel Documentation**](https://learn.microsoft.com/en-us/azure/sentinel/)  
-- [**Defender for Endpoint DeviceLogonEvents Schema**](https://learn.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-device-logon-events-table)  
-- [**MITRE ATT&CK: Brute Force (T1110)**](https://attack.mitre.org/techniques/T1110/)  
-- **NIST 800-61: Computer Security Incident Handling Guide**  
