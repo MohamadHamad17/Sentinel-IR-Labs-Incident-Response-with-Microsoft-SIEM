@@ -17,9 +17,12 @@ All **DeviceLogonEvents** generated from **local and remote logon attempts** wer
 ---
 
 ## 🔍 Part 1 — Brute Force Attempt Detection
-The **detection mechanism** is based on **aggregating failed logon attempts** within a **time window**. The **KQL query** leverages the **DeviceLogonEvents table** with filtering on the **ActionType** field.
+The **detection mechanism** is based on **aggregating failed logon attempts** within a **time window**. The **KQL query** leverages the **DeviceLogonEvents table** with filtering on the **ActionType** field. 
 
-**Sentinel Scheduled Query Rule**  
+<img width="1422" height="731" alt="Screenshot 2025-08-17 at 4 07 21 PM" src="https://github.com/user-attachments/assets/f1c49558-ade3-45d8-a641-ffa6244ffe1c" />
+<img width="1422" height="731" alt="Screenshot 2025-08-17 at 4 11 21 PM" src="https://github.com/user-attachments/assets/8a7e89c9-27a9-4258-85ce-cc5243bb3c39" />
+
+**Sentinel Scheduled Query Rule:**  
 
 ```kql
 DeviceLogonEvents
