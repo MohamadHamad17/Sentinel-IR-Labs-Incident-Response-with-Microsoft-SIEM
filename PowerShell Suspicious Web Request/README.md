@@ -96,17 +96,6 @@ This query checks if **any downloaded scripts** were subsequently **executed**.
 ### Closure
 The incident was marked as a **True Positive** simulation. Documentation and notes were finalized, and the case was **closed** in Sentinel.
 
----
-
-## 🧹 Part 4 — Cleanup
-To maintain a clean lab environment:
-- In Sentinel → **Threat Management → Incidents**, delete the **closed incident**.  
-- In Sentinel → **Configuration → Analytics**, delete the **custom analytics rule**.  
-
-⚠️ Be careful to only delete your own objects to avoid affecting shared environments.
-
----
-
 ## 📑 Findings & Notes
 - **Suspicious PowerShell web requests** were detected using the **DeviceProcessEvents** table.  
 - **Invoke-WebRequest** was used to download test scripts (e.g., `eicar.ps1`).  
