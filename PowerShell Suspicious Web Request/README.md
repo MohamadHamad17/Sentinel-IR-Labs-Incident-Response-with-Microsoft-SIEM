@@ -22,7 +22,7 @@ Sometimes when a bad actor has access to a system, they attempt to download mali
 
 **Sentinel Scheduled Query Rule:**
 ```kql
-    let TargetHostname = "windows-target-1"; // Replace with the name of your VM as it shows up in the logs
+    let TargetHostname = "john-smith"; // Replace with the name of your VM as it shows up in the logs
     DeviceProcessEvents
     | where DeviceName == TargetHostname // comment this line out for MORE results
     | where FileName == "powershell.exe"
@@ -56,6 +56,7 @@ If natural logs don’t exist, a **simulation** can be run from the VM:
     powershell.exe -ExecutionPolicy Bypass -File 'C:\programdata\eicar.ps1';
 ```
 This triggers the **analytics rule**, producing a new **alert** that automatically escalates into an **incident** within Sentinel.
+<img width="832" height="578" alt="Screenshot 2025-08-18 at 11 27 11 AM" src="https://github.com/user-attachments/assets/4ec78cc9-7353-420e-b488-6c43f1ea8d9c" />
 
 ---
 
@@ -67,11 +68,11 @@ The incident was worked in accordance with the **NIST 800-61** standard.
 - **Roles and responsibilities** were documented ahead of time.  
 
 ### Detection & Analysis
-The **PowerShell Suspicious Web Request – Josh** incident was triggered from activity on the **windows-target-1 VM**.  
+The **PowerShell Suspicious Web Request** incident was triggered from activity on the **johnsmith**.  
 
 To determine if any downloaded scripts were executed, the following **investigative query** was used:
-
-    let TargetHostname = "windows-target-1"; 
+```kql
+    let TargetHostname = "john-smith"; 
     let ScriptNames = dynamic(["eicar.ps1", "exfiltratedata.ps1", "portscan.ps1", "pwncrypt.ps1"]);
     DeviceProcessEvents
     | where DeviceName == TargetHostname
@@ -79,7 +80,7 @@ To determine if any downloaded scripts were executed, the following **investigat
     | where ProcessCommandLine contains "-File" and ProcessCommandLine has_any (ScriptNames)
     | order by TimeGenerated
     | project TimeGenerated, AccountName, DeviceName, FileName, ProcessCommandLine
-
+```
 This query checks if **any downloaded scripts** were subsequently **executed**.
 
 ### Containment, Eradication, and Recovery
