@@ -1,7 +1,7 @@
 # Brute Force Detection & Incident Response Lab
 
 ## 📖 Overview
-This project demonstrates how **brute force login attempts** against **Azure-hosted Virtual Machines** can be **detected** and **investigated** using **Microsoft Defender for Endpoint (MDE)** telemetry combined with **Microsoft Sentinel**. The workflow begins with raw event collection (**DeviceLogonEvents**) and progresses through building **analytics rules**, triggering **alerts**, and performing **incident response** aligned with the **NIST 800-61** framework. The end goal is to illustrate the complete lifecycle: **detection, analysis, containment, eradication, recovery, and post-incident review**.
+This project demonstrates how **brute force login attempts** against **Azure-hosted Virtual Machines** can be **detected** and **investigated** using **Microsoft Defender for Endpoint (MDE)** telemetry combined with **Microsoft Sentinel**. The workflow begins with raw event collection (**DeviceLogonEvents**) and progresses through building **analytics rules**, triggering **alerts**, and performing **incident response** aligned with the **NIST 800-61** framework. The end goal is to illustrate the complete lifecycle: **detection, analysis, containment, eradication, recovery, and post-incident review**
 
 ---
 
