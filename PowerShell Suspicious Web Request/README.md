@@ -1,5 +1,7 @@
 # PowerShell Suspicious Web Request & Incident Response Lab
 
+<img width="1012" height="570" alt="Screenshot 2025-08-18 at 10 48 02 AM" src="https://github.com/user-attachments/assets/62083b32-e14c-49fd-b0e2-6ffb48aba3df" />
+
 ## 📖 Overview
 This project demonstrates how **malicious PowerShell activity** involving **suspicious web requests** can be **detected** and **investigated** using **Microsoft Defender for Endpoint (MDE)** telemetry combined with **Microsoft Sentinel**. The workflow begins with raw event collection (**DeviceProcessEvents**) and progresses through building **analytics rules**, triggering **alerts**, and performing **incident response** aligned with the **NIST 800-61** framework. The end goal is to illustrate the complete lifecycle: **detection, analysis, containment, eradication, recovery, and post-incident review**.
 
@@ -27,6 +29,9 @@ Sometimes when a bad actor has access to a system, they attempt to download mali
     | where InitiatingProcessCommandLine contains "Invoke-WebRequest"
     | order by TimeGenerated
 ```
+<img width="1131" height="246" alt="Screenshot 2025-08-18 at 10 57 55 AM" src="https://github.com/user-attachments/assets/56ec11bf-b061-4767-b201-280060d5526b" />
+
+
 **Scheduled Analytics Rule Settings:**
 - **Rule frequency:** every 4 hours  
 - **Lookup time window:** 24 hours  
